@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 01:10:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/04/28 03:07:17 by egoncalv         ###   ########.fr       */
+/*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
+/*   Updated: 2022/04/28 02:00:40 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	main(void)
+void	my_pixel_put(t_data *data, int x, int y, int color)
 {
-	t_data	data;
+	char	*dst;
 
-	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, 960, 540, "SO_LONG");
-	mlx_loop(data.mlx);
-	return (0);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
