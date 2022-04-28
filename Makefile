@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/04/28 02:23:23 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/04/28 06:14:36 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,35 +19,49 @@ NAME = so_long
 SRC =	src/main.c \
 		src/start.c \
 		src/utils.c \
+		gnl/get_next_line.c \
+		gnl/get_next_line_utils.c \
 
 OBJ = $(SRC:.c=.o)
 
 LIBS_OBJ =	ft_printf/src/*.o \
 			ft_printf/libft/*.o \
+			
+
+NONE='\033[0m'
+GREEN='\033[32m'
+YELLOW='\033[33m'
+GRAY='\033[2;37m'
+CURSIVE='\033[3m'
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo $(CURSIVE)$(GRAY) "     - Making mlx..." $(NONE)
 	@$(MAKE) -C mlx
+	@echo $(CURSIVE)$(GRAY) "     - Making ft_printf..." $(NONE)
 	@$(MAKE) -C ft_printf
+	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)" $(NONE)
 	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJ) $(LIBS_OBJ) -o $(NAME)
 	@mv mlx/libmlx.dylib .
-	@echo "$(NAME) was created!"
+	@echo $(CURSIVE)$(GREEN)"$(NAME) was created!"
 	
 %.o: %.c
+	@echo $(CURSIVE)$(GRAY) "     - Making Object Files..." $(NONE)
 	@gcc $(CFLAGS) -c $< -o $@
 
 clean:
 	@$(MAKE) -C mlx clean
 	@$(MAKE) -C ft_printf clean
-	@echo "Object files were cleaned"
+	@rm -rf gnl/*.o
+	@echo $(CURSIVE)$(GRAY)"Object files were cleaned"$(NONE)
 
 fclean: clean
 	@$(MAKE) -C mlx clean
 	@$(MAKE) -C ft_printf fclean
 	@rm -f $(NAME)
 	@rm -f libmlx.dylib
-	@$(NAME) was cleaned
+	@echo $(CURSIVE)$(GRAY)"So_long was cleaned"$(NONE)
 	
 re: fclean $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/04/28 03:07:24 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/04/28 06:15:36 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "keys_macos.h"
 # include "../mlx/mlx.h"
 # include "../ft_printf/includes/ft_printf.h"
+# include "../gnl/get_next_line.h"
+# include <fcntl.h>
 
 typedef struct s_data
 {
@@ -30,8 +32,7 @@ typedef struct s_data
 	int		img_heigth;
 }				t_data;
 
-void	start_screen(t_data *data);
-void	my_pixel_put(t_data *data, int x, int y, int color);
+void	my_pixel_put(t_data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
 
 #endif

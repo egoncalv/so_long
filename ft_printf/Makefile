@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 01:22:21 by egoncalv          #+#    #+#              #
-#    Updated: 2022/03/30 15:23:12 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/04/28 05:14:11 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ $(NAME): $(OBJ)
 	@mv libft.a $(NAME)
 	@ar rcs $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "$(NAME) was created"
 
 %.o: %.c 
 	@gcc $(FLAG) -c $< -o $@
@@ -43,7 +42,6 @@ fclean: clean
 	@$(MAKE) -C libft/ clean
 	@rm -f $(NAME)
 	@rm -f a.out
-	@echo "$(NAME) removed"
 
 re: fclean $(NAME)
 
