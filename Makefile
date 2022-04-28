@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/04/28 06:14:36 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/04/28 07:44:17 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ MLXFLAGS = -lmlx -Lmlx -framework OpenGL -framework AppKit
 NAME = so_long
 
 SRC =	src/main.c \
-		src/start.c \
 		src/utils.c \
+		src/parse_maps.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 
@@ -53,6 +53,7 @@ $(NAME): $(OBJ)
 clean:
 	@$(MAKE) -C mlx clean
 	@$(MAKE) -C ft_printf clean
+	@rm -rf src/*.o
 	@rm -rf gnl/*.o
 	@echo $(CURSIVE)$(GRAY)"Object files were cleaned"$(NONE)
 
