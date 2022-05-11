@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/04/28 07:43:56 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/05/04 00:23:13 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ typedef struct s_data
 	int		img_heigth;
 }				t_data;
 
-typedef struct s_map
+typedef struct s_tile
 {
-	int	fd;
-}			t_map;
+	char	type[10];
+	s_tile	*right;
+	s_tile	*left;
+	s_tile	*down;
+	s_tile	*up;
+}			t_tile;
 
 void	my_pixel_put(t_data *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);

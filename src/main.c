@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:10:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/04/28 07:43:19 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/05/04 00:15:15 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int	main(int argc, char *argv[])
 		ft_printf("You need to pass at least one map as argument!");
 		return (0);	
 	}
-	parse_maps(argv[1]);
+	if (parse_maps(argv[1]) == 0)
+	{
+		ft_printf("This map is invalid");
+		return (0);
+	}
 	return (0);
 }
