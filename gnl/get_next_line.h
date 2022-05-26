@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 19:35:42 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/04/28 06:37:07 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:50:26 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "../ft_printf/libft/libft.h"
+# include "../ft_printf/includes/ft_printf.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#	define BUFFER_SIZE 100
 # endif
 
 char	*get_next_line(int fd);

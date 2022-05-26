@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/05/04 00:23:13 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/05/21 15:41:09 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,14 @@ typedef struct s_data
 	int		img_heigth;
 }				t_data;
 
-typedef struct s_tile
+typedef struct s_map
 {
-	char	type[10];
-	s_tile	*right;
-	s_tile	*left;
-	s_tile	*down;
-	s_tile	*up;
-}			t_tile;
+	
+}				t_map;
+
 
 void	my_pixel_put(t_data *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
-int		parse_maps(char	*argv);
+char	**parse_maps(char *argv);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 19:33:52 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/04/28 06:34:33 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:44:55 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,14 @@ char	*ft_state(char *state)
 
 char	*get_next_line(int fd)
 {
-	static char	*state;
 	char		*line;
+	static char	*state;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
+		return (0);
 	state = ft_read_set(fd, state);
 	if (!state)
-		return (NULL);
+		return (0);
 	line = ft_line(state);
 	state = ft_state(state);
 	return (line);
