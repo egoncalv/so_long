@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/05/21 15:41:09 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/07 19:57:42 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_map
 
 void	my_pixel_put(t_data *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
-char	**parse_maps(char *argv);
+void	parse_maps(char *argv);
+void	evaluate_maps(t_list *map);
+void	check_walls(char *line, int map_length, int current_line, int last_line);
 
 #endif
