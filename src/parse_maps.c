@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 12:05:42 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/08 12:22:47 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	evaluate_maps(t_list *map)
 	char		*line;
 
 	map_length = ft_strlen(map->content);
-	last_line = ft_lstsize(map) + 3;
-	cur_line = 0;
+	last_line = ft_lstsize(map);
+	cur_line = 1;
 	while (map)
 	{
 		line = ft_strdup(map->content);
@@ -100,7 +100,7 @@ void	check_elements(char *line, int cur_line, int last_line)
 			exit_error("The map needs one player!");
 		if (exit != 1)
 			exit_error("The map needs one exit!");
-		if (collectibles < 0)
+		if (collectibles < 1)
 			exit_error("The map needs at least one collectible!");
 	}
 }
