@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 23:58:07 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/09 00:07:25 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	parse_maps(char *argv, t_list *map);
 void	evaluate_maps(t_list *map);
 void	check_walls(char *line, int map_length, int cur_line, int last_line);
 void	check_elements(char *line, int cur_line, int last_line);
-void	check_extension(char *file);
+void	check_extension(char *file, int argc);
 void	exit_error(char *error_message);
 
 #endif

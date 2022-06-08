@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/09 00:02:58 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/09 00:07:17 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,13 @@ void	check_elements(char *line, int cur_line, int last_line)
 	}
 }
 
-void	check_extension(char *file)
+void	check_extension(char *file, int argc)
 {
 	char	*extension;
 	
+	if (argc < 2)
+		exit_error("You must pass one valid map as argument!");
 	extension = ft_strrchr(file, '.');
-	if (!extension)
-		exit_error("The map needs a .ber extension!");
-	if (ft_strncmp(extension, ".ber", 4) != 0)
+	if (!extension || ft_strncmp(extension, ".ber", 4) != 0)
 		exit_error("The map needs a .ber extension!");
 }
