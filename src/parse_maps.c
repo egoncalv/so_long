@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 12:27:52 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/09 00:02:58 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ void	check_walls(char *line, int map_length, int cur_line, int last_line)
 		exit_error("The map must be surrounded by Walls!");
 }
 
-//Checks if there is at least one collectible, one exit and one player in the map,
-//returns an error if it does not.
+/*Checks if there is at least one collectible, 
+one exit and one player in the map,returns an 
+error if it does not.*/
 void	check_elements(char *line, int cur_line, int last_line)
 {
 	static int	start_position;
@@ -107,4 +108,15 @@ void	check_elements(char *line, int cur_line, int last_line)
 		if (collectibles < 1)
 			exit_error("The map needs at least one collectible!");
 	}
+}
+
+void	check_extension(char *file)
+{
+	char	*extension;
+	
+	extension = ft_strrchr(file, '.');
+	if (!extension)
+		exit_error("The map needs a .ber extension!");
+	if (ft_strncmp(extension, ".ber", 4) != 0)
+		exit_error("The map needs a .ber extension!");
 }
