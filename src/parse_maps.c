@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 11:16:47 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/08 12:05:42 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	parse_maps(char *argv, t_list *map)
 
 void	evaluate_maps(t_list *map)
 {
-	int			x;
 	int			cur_line;
 	int			map_length;
 	int			last_line;
@@ -44,10 +43,9 @@ void	evaluate_maps(t_list *map)
 	cur_line = 0;
 	while (map)
 	{
-		x = 0;
 		line = ft_strdup(map->content);
 		check_walls(line, map_length, cur_line, last_line);
-		
+		check_elements(line, cur_line, last_line);
 		cur_line++;
 		map = map->next;
 	}
@@ -76,4 +74,33 @@ void	check_walls(char *line, int map_length, int cur_line, int last_line)
 		exit_error("The map must be surrounded by Walls!");
 	if (line[map_length - 2] != '1')
 		exit_error("The map must be surrounded by Walls!");
+}
+
+void	check_elements(char *line, int cur_line, int last_line)
+{
+	static int	start_position;
+	static int	collectibles;
+	static int	exit;
+	int			x;
+
+	x = 0;
+	while (line[x])
+	{
+		if (line[x] == 'P')
+			start_position++;
+		if (line[x] == 'C')
+			collectibles++;
+		if (line[x] == 'E')
+			exit++;
+		x++;
+	}
+	if (cur_line == last_line)
+	{
+		if (start_position != 1)
+			exit_error("The map needs one player!");
+		if (exit != 1)
+			exit_error("The map needs one exit!");
+		if (collectibles < 0)
+			exit_error("The map needs at least one collectible!");
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:10:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 11:17:25 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/08 12:05:52 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char *argv[])
 {
-	t_list	*map;
-	
+	t_list		*map;
+
 	map = 0;
 	if (argc < 2)
 	{

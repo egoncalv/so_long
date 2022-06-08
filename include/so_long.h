@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 11:13:45 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/08 11:53:51 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		create_trgb(int t, int r, int g, int b);
 void	parse_maps(char *argv, t_list *map);
 void	evaluate_maps(t_list *map);
 void	check_walls(char *line, int map_length, int cur_line, int last_line);
+void	check_elements(char *line, int cur_line, int last_line);
 void	exit_error(char *error_message);
 
 #endif
