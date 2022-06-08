@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/07 19:57:42 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/08 11:13:45 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,17 @@ typedef struct s_data
 	int		img_heigth;
 }				t_data;
 
-typedef struct s_map
+typedef struct s_player
 {
-	
-}				t_map;
-
+	int	initial_x;
+	int	initial_y;
+}				t_player;
 
 void	my_pixel_put(t_data *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
-void	parse_maps(char *argv);
+void	parse_maps(char *argv, t_list *map);
 void	evaluate_maps(t_list *map);
-void	check_walls(char *line, int map_length, int current_line, int last_line);
+void	check_walls(char *line, int map_length, int cur_line, int last_line);
+void	exit_error(char *error_message);
 
 #endif

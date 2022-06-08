@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 01:10:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 11:17:25 by erickbarros      ###   ########.fr       */
+/*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
+/*   Updated: 2022/06/08 11:04:10 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	main(int argc, char *argv[])
+void	exit_error(char *error_message)
 {
-	t_list	*map;
-	
-	map = 0;
-	if (argc < 2)
-	{
-		ft_printf("You need to pass at least one map as argument!");
-		return (0);
-	}
-	else
-		parse_maps(argv[1], map);
-	return (0);
+	ft_printf("Error\n%s\nClosing Program\n", error_message);
+	exit(0);
 }
