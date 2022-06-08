@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/08 12:22:47 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/08 12:27:52 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	parse_maps(char *argv, t_list *map)
 	evaluate_maps(map);
 }
 
+//Iterates through the map (linked list), and invokes the functions
+//to verify if the map is valid or not.
 void	evaluate_maps(t_list *map)
 {
 	int			cur_line;
@@ -52,7 +54,7 @@ void	evaluate_maps(t_list *map)
 	free(line);
 }
 
-//This function checks if the map is surrounded
+//Checks if the map is surrounded
 //by walls, and returns an error if not
 void	check_walls(char *line, int map_length, int cur_line, int last_line)
 {
@@ -76,6 +78,8 @@ void	check_walls(char *line, int map_length, int cur_line, int last_line)
 		exit_error("The map must be surrounded by Walls!");
 }
 
+//Checks if there is at least one collectible, one exit and one player in the map,
+//returns an error if it does not.
 void	check_elements(char *line, int cur_line, int last_line)
 {
 	static int	start_position;
