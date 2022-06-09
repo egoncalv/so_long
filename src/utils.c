@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/04/28 07:10:27 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/06/09 00:23:10 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,15 @@ void	my_pixel_put(t_data *data, int x, int y, int color)
 int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	check_extension(char *file, int argc)
+{
+	char	*extension;
+	
+	if (argc < 2)
+		exit_error("You must pass one valid map as argument!");
+	extension = ft_strrchr(file, '.');
+	if (!extension || ft_strncmp(extension, ".ber", 4) != 0)
+		exit_error("The map needs a .ber extension!");
 }
