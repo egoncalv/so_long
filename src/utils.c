@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/09 00:23:10 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/11 02:29:29 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	create_trgb(int t, int r, int g, int b)
 void	check_extension(char *file, int argc)
 {
 	char	*extension;
-	
+
 	if (argc < 2)
 		exit_error("You must pass one valid map as argument!");
 	extension = ft_strrchr(file, '.');

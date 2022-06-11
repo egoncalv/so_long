@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/09 01:44:54 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/11 03:14:07 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // This function creates a linked list and places a line by node,
 // for each line of the given map.
-void	parse_maps(char *argv, t_list *map, t_map *map_info)
+t_list	*parse_maps(char *argv, t_list *map, t_map *map_info)
 {
 	int		fd;
 	char	*line;
@@ -30,6 +30,7 @@ void	parse_maps(char *argv, t_list *map, t_map *map_info)
 	free(line);
 	evaluate_maps(map);
 	set_map(map_info, map);
+	return (map);
 }
 
 //Iterates through the map (linked list), and invokes the functions
@@ -40,17 +41,19 @@ void	evaluate_maps(t_list *map)
 	int			map_length;
 	int			last_line;
 	char		*line;
+	t_list		*tmp;
 
+	tmp = map;
 	map_length = ft_strlen(map->content);
 	last_line = ft_lstsize(map);
 	cur_line = 1;
-	while (map)
+	while (tmp)
 	{
-		line = ft_strdup(map->content);
+		line = ft_strdup(tmp->content);
 		check_walls(line, map_length, cur_line, last_line);
 		check_elements(line, cur_line, last_line);
 		cur_line++;
-		map = map->next;
+		tmp = tmp->next;
 	}
 	free(line);
 }
@@ -115,5 +118,7 @@ void	set_map(t_map *map_info, t_list *map)
 {
 	map_info->map_length = ft_strlen(map->content);
 	map_info->map_heigth = ft_lstsize(map);
-	map_info->wall_sprint = "./assets/03.xpm";
+	map_info->wall = "./assets/wall.xpm";
+	map_info->player = "./assets/player.xpm";
+	map_info->empty = "./assets/wood.xpm";
 }
