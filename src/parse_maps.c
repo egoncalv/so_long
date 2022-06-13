@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/11 03:14:07 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/13 16:20:03 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,6 @@ void	set_map(t_map *map_info, t_list *map)
 	map_info->wall = "./assets/wall.xpm";
 	map_info->player = "./assets/player.xpm";
 	map_info->empty = "./assets/wood.xpm";
+	map_info->collect = "./assets/collectible.xpm";
+	map_info->exit = "./assets/door.xpm";
 }
