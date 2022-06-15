@@ -6,13 +6,13 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/13 19:31:43 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/14 01:51:38 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	draw_map(t_data *data, t_map *map_info, t_list *map)
+void	draw_map(t_data *data)
 {
 	int		x;
 	int		y;
@@ -20,14 +20,14 @@ void	draw_map(t_data *data, t_map *map_info, t_list *map)
 	t_list	*tmp;
 
 	y = 0;
-	tmp = map;
+	tmp = data->map;
 	while (tmp)
 	{
 		x = 0;
 		line = ft_strdup(tmp->content);
 		while (line[x])
 		{
-			print_tile(line[x], map_info, data);
+			print_tile(line[x], data);
 			mlx_put_image_to_window(data->mlx, data->win,
 				data->img, x * 64, y * 64);
 			x++;
@@ -38,7 +38,7 @@ void	draw_map(t_data *data, t_map *map_info, t_list *map)
 	}
 }
 
-void	print_tile(char c, t_map *map_info, t_data *data)
+void	print_tile(char c, t_data *data)
 {
 	char	*tile;
 
@@ -46,15 +46,15 @@ void	print_tile(char c, t_map *map_info, t_data *data)
 	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
 	{
 		if (c == '1')
-			tile = ft_strdup(map_info->wall);
+			tile = ft_strdup(data->map_info->wall);
 		if (c == '0')
-			tile = ft_strdup(map_info->empty);
+			tile = ft_strdup(data->map_info->empty);
 		if (c == 'P')
-			tile = ft_strdup(map_info->player);
+			tile = ft_strdup(data->map_info->player);
 		if (c == 'C')
-			tile = ft_strdup(map_info->collect);
+			tile = ft_strdup(data->map_info->collect);
 		if (c == 'E')
-			tile = ft_strdup(map_info->exit);
+			tile = ft_strdup(data->map_info->exit);
 		data->img = mlx_xpm_file_to_image(data->mlx, tile,
 				&data->img_width, &data->img_heigth);
 		data->addr = mlx_get_data_addr(data->img, &data->bpp,

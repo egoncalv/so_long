@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/13 16:20:03 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/14 02:08:30 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,22 @@
 
 // This function creates a linked list and places a line by node,
 // for each line of the given map.
-t_list	*parse_maps(char *argv, t_list *map, t_map *map_info)
+void	parse_maps(char *argv, t_data *data)
 {
 	int		fd;
 	char	*line;
 
 	fd = open(argv, O_RDONLY);
+	data->map = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		ft_lstadd_back(&map, ft_lstnew(line));
+		ft_lstadd_back(&data->map, ft_lstnew(line));
 	}
 	free(line);
-	evaluate_maps(map);
-	set_map(map_info, map);
-	return (map);
+	evaluate_maps(data->map);
 }
 
 //Iterates through the map (linked list), and invokes the functions
@@ -112,15 +111,4 @@ void	check_elements(char *line, int cur_line, int last_line)
 		if (collectibles < 1)
 			exit_error("The map needs at least one collectible!");
 	}
-}
-
-void	set_map(t_map *map_info, t_list *map)
-{
-	map_info->map_length = ft_strlen(map->content);
-	map_info->map_heigth = ft_lstsize(map);
-	map_info->wall = "./assets/wall.xpm";
-	map_info->player = "./assets/player.xpm";
-	map_info->empty = "./assets/wood.xpm";
-	map_info->collect = "./assets/collectible.xpm";
-	map_info->exit = "./assets/door.xpm";
 }
