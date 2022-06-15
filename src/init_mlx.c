@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 00:13:10 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/14 02:37:51 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/15 19:26:15 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	init_mlx(t_data *data)
 	int		width;
 	int		heigth;
 
-	width = (data->map_info->map_length - 1) * 64;
-	heigth = data->map_info->map_heigth * 64;
+	width = (data->map_info.map_length - 1) * 64;
+	heigth = data->map_info.map_heigth * 64;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, width, heigth, "so_long");
 	draw_map(data);

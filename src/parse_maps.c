@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/14 02:08:30 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/15 19:15:52 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	parse_maps(char *argv, t_data *data)
 	char	*line;
 
 	fd = open(argv, O_RDONLY);
-	data->map = 0;
 	while (1)
 	{
 		line = get_next_line(fd);

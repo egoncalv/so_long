@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/14 02:35:49 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/15 19:15:28 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_data
 	int			img_heigth;
 	t_player	*player;
 	t_list		*map;
-	t_map		*map_info;
+	t_map		map_info;
 }				t_data;
 
 void	my_pixel_put(t_data *data, int x, int y, int color);
@@ -61,7 +61,7 @@ void	check_elements(char *line, int cur_line, int last_line);
 void	check_extension(char *file, int argc);
 void	exit_error(char *error_message);
 void	init_mlx(t_data *data);
-void	set_map(t_map *map_info, t_list *map);
+void	set_map(t_data *data);
 void	draw_map(t_data *data);
 void	print_tile(char c, t_data *data);
 

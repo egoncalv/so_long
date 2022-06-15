@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/14 01:51:38 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/15 19:16:34 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void	print_tile(char c, t_data *data)
 	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
 	{
 		if (c == '1')
-			tile = ft_strdup(data->map_info->wall);
+			tile = ft_strdup(data->map_info.wall);
 		if (c == '0')
-			tile = ft_strdup(data->map_info->empty);
+			tile = ft_strdup(data->map_info.empty);
 		if (c == 'P')
-			tile = ft_strdup(data->map_info->player);
+			tile = ft_strdup(data->map_info.player);
 		if (c == 'C')
-			tile = ft_strdup(data->map_info->collect);
+			tile = ft_strdup(data->map_info.collect);
 		if (c == 'E')
-			tile = ft_strdup(data->map_info->exit);
+			tile = ft_strdup(data->map_info.exit);
 		data->img = mlx_xpm_file_to_image(data->mlx, tile,
 				&data->img_width, &data->img_heigth);
 		data->addr = mlx_get_data_addr(data->img, &data->bpp,

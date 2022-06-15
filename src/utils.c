@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/14 02:37:57 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/15 19:25:48 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	check_extension(char *file, int argc)
 		exit_error("The map needs a .ber extension!");
 }
 
-void	set_map(t_map *map_info, t_list *map)
+void	set_map(t_data *data)
 {
-	map_info->map_length = ft_strlen(map->content);
-	map_info->map_heigth = ft_lstsize(map);
-	map_info->wall = "./assets/wall.xpm";
-	map_info->player = "./assets/player.xpm";
-	map_info->empty = "./assets/wood.xpm";
-	map_info->collect = "./assets/collectible.xpm";
-	map_info->exit = "./assets/door.xpm";
+	data->map_info.map_length = ft_strlen(data->map->content);
+	data->map_info.map_heigth = ft_lstsize(data->map);
+	data->map_info.wall = "./assets/wall.xpm";
+	data->map_info.player = "./assets/player.xpm";
+	data->map_info.empty = "./assets/wood.xpm";
+	data->map_info.collect = "./assets/collectible.xpm";
+	data->map_info.exit = "./assets/door.xpm";
 }
