@@ -6,11 +6,11 @@
 #    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/06/16 02:22:40 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/06/16 03:57:02 by erickbarros      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -g
+#CFLAGS = -Wall -Wextra -Werror -g
 
 MLXFLAGS = -lmlx -Lmlx -framework OpenGL -framework AppKit
 

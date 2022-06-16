@@ -6,11 +6,24 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 02:11:11 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 05:23:37 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	count_lines(char *argv)
+{
+	int		count;
+	int		fd;
+
+	count = 0;
+	fd = open (argv, O_RDONLY);
+	while (get_next_line(fd))
+		count++;
+	close (fd);
+	return (count);
+}
 
 void	check_extension(char *file, int argc)
 {
@@ -25,8 +38,8 @@ void	check_extension(char *file, int argc)
 
 void	set_map(t_data *data)
 {
-	data->map_info.map_length = ft_strlen(data->map->content);
-	data->map_info.map_heigth = ft_lstsize(data->map);
+	data->map_info.map_length = ft_strlen(data->map[0]);
+	data->map_info.map_heigth = count_lines(data->argv);
 	data->map_info.wall = "./assets/wall.xpm";
 	data->map_info.player = "./assets/player.xpm";
 	data->map_info.empty = "./assets/wood.xpm";

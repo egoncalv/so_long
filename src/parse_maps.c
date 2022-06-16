@@ -6,82 +6,70 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 02:12:05 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 05:43:13 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// This function creates a linked list and places a line by node,
-// for each line of the given map.
-void	parse_maps(char *argv, t_data *data)
+// This function reads from the given map into a 2d array
+// and calls other functions that will parse
+// the map to verify it.
+void	parse_maps(t_data *data)
 {
 	int		fd;
-	char	*line;
+	int		count;
+	t_pos	pos;
 
-	fd = open(argv, O_RDONLY);
+	data->map = malloc(sizeof(char **) * count_lines(data->argv) + 1);
+	if (!data->map)
+		exit_error("Failed to allocate memory");
+	fd = open(data->argv, O_RDONLY);
+	pos.y = 0;
 	while (1)
 	{
-		line = get_next_line(fd);
-		if (!line)
+		data->map[pos.y] = get_next_line(fd);
+		if (data->map[pos.y] == 0)
 			break ;
-		ft_lstadd_back(&data->map, ft_lstnew(line));
+		pos.y++;
 	}
-	free(line);
-	set_map(data);
-	evaluate_maps(data);
 	close(fd);
-}
-
-//Iterates through the map (linked list), and invokes the functions
-//to verify if the map is valid or not.
-void	evaluate_maps(t_data *data)
-{
-	int			cur_line;
-	char		*line;
-	t_list		*tmp;
-
-	tmp = data->map;
-	cur_line = 0;
-	while (tmp)
-	{
-		line = ft_strdup(tmp->content);
-		check_walls(data, line, cur_line);
-		check_elements(data, line, cur_line);
-		tmp = tmp->next;
-		cur_line++;
-	}
-	free(line);
-	free(tmp);
+	set_map(data);
+	check_walls(data);
 }
 
 //Checks if the map is surrounded
 //by walls, and returns an error if not
-void	check_walls(t_data *data, char *line, int cur_line)
+void	check_walls(t_data *data)
 {
-	int	x;
+	t_pos	pos;
 
-	x = 0;
-	if (cur_line == 0 || cur_line == ft_lstsize(data->map))
+	pos.y = 0;
+	while (data->map[pos.y] != 0)
 	{
-		while (line[x] != '\n')
+		pos.x = 0;
+		if ((int)ft_strlen(data->map[pos.y]) != data->map_info.map_length)
+			exit_error("The map must be rectangular!");
+		if (pos.y == 0 || pos.y == data->map_info.map_heigth - 1)
 		{
-			if (line[x] != '1' && line[x] != '\n')
-				exit_error("The map must be surrounded by Walls!");
-			x++;
+			while (data->map[pos.y][pos.x] != '\n')
+			{
+				if (data->map[pos.y][pos.x] != '1' &&
+					data->map[pos.y][pos.x] != '\n')
+					exit_error("The map must be surrounded by Walls!");
+				pos.x++;
+			}
 		}
+		if (data->map[pos.y][0] != '1' ||
+			data->map[pos.y][data->map_info.map_length - 2] != '1')
+			exit_error("The map must be surrounded by Walls!");
+		pos.y++;
 	}
-	if ((int)ft_strlen(line) != data->map_info.map_length)
-		exit_error("The map must be rectangular!");
-	if (line[0] != '1')
-		exit_error("The map must be surrounded by Walls!");
-	if (line[data->map_info.map_length - 2] != '1')
-		exit_error("The map must be surrounded by Walls!");
 }
 
-/*Checks if there is at least one collectible, 
-one exit and one player in the map, sets their positions and returns an 
-error if any element is missing.*/
+//Checks if there is at least one collectible, 
+//one exit and one player in the map, sets their positions and returns an 
+//error if any element is missing.
 void	check_elements(t_data *data, char *line, int cur_line)
 {
 	static int	collectibles;
