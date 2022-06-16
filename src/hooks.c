@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 01:55:59 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/16 06:11:42 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 06:31:08 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,29 @@ int	key_hook(int keycode, t_data *data)
 int	move_player(t_data *data, int direction)
 {
 	if (direction == KEY_UP)
+	{
+		data->map[data->player.y][data->player.x] = '0';
 		data->player.y--;
+		data->map[data->player.y][data->player.x] = 'P';
+	}
 	if (direction == KEY_DOWN)
+	{
+		data->map[data->player.y][data->player.x] = '0';
 		data->player.y++;
+		data->map[data->player.y][data->player.x] = 'P';
+	}
 	if (direction == KEY_RIGHT)
+	{
+		data->map[data->player.y][data->player.x] = '0';
 		data->player.x++;
+		data->map[data->player.y][data->player.x] = 'P';
+	}
 	if (direction == KEY_LEFT)
+	{
+		data->map[data->player.y][data->player.x] = '0';
 		data->player.x--;
-	print_player(data);
+		data->map[data->player.y][data->player.x] = 'P';
+	}
+	draw_map(data); 
 	return (0);
-}
-
-void	print_player(t_data *data)
-{
-	data->img = mlx_xpm_file_to_image(data->mlx, data->map_info.player,
-			&data->img_width, &data->img_heigth);
-	data->addr = mlx_get_data_addr(data->img, &data->bpp,
-			&data->length, &data->endian);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->img, data->player.x * (data->img_width - 1), data->player.y * (data->img_heigth - 1));	
 }
