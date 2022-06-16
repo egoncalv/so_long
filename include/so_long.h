@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 06:04:45 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 06:15:58 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		exit_clean(t_data *data);
 void	init_mlx(t_data *data);
 void	set_map(t_data *data);
 void	draw_map(t_data *data);
-void	choose_tile(char c, t_data *data);
+void	choose_tile(t_data *data, char c);
 void	set_player_position(t_data *data, int x, int y, char element);
 int		key_hook(int keycode, t_data *data);
 int		move_player(t_data *data, int direction);

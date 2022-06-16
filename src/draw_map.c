@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/16 03:56:51 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 06:17:03 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,24 @@
 
 void	draw_map(t_data *data)
 {
-	int		x;
-	int		y;
-	char	*line;
-	t_list	*tmp;
+	t_pos	pos;
 
-	y = 0;
-	tmp = data->map;
-	while (tmp)
+	pos.y = 0;
+	while (data->map[pos.y])
 	{
-		x = 0;
-		line = ft_strdup(tmp->content);
-		while (line[x])
+		pos.x = 0;
+		while (data->map[pos.y][pos.x])
 		{
-			choose_tile(line[x], data);
+			choose_tile(data, data->map[pos.y][pos.x]);
 			mlx_put_image_to_window(data->mlx, data->win,
-				data->img, x * (data->img_width - 1), y * (data->img_heigth - 1));
-			x++;
+				data->img, pos.x * (data->img_width - 1), pos.y * (data->img_heigth - 1));
+			pos.x++;
 		}
-		y++;
-		tmp = tmp->next;
-		free (line);
+		pos.y++;
 	}
 }
 
-void	choose_tile(char c, t_data *data)
+void	choose_tile(t_data *data, char c)
 {
 	char	*tile;
 
