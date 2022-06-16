@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/15 19:15:28 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 01:27:00 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_map
 {
 	int		map_length;
 	int		map_heigth;
+	int		exit_x;
+	int		exit_y;
 	char	*wall;
 	char	*player;
 	char	*empty;
@@ -30,11 +32,12 @@ typedef struct s_map
 	char	*exit;
 }			   t_map;
 
-typedef struct s_player
+typedef struct s_object
 {
+	int	quantity;
 	int	x;
 	int	y;
-}				t_player;
+}				t_object;
 
 typedef struct s_data
 {
@@ -47,7 +50,8 @@ typedef struct s_data
 	int			endian;
 	int			img_width;
 	int			img_heigth;
-	t_player	*player;
+	t_object	player;
+	t_object	exit;
 	t_list		*map;
 	t_map		map_info;
 }				t_data;
@@ -55,14 +59,15 @@ typedef struct s_data
 void	my_pixel_put(t_data *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
 void	parse_maps(char *argv, t_data *data);
-void	evaluate_maps(t_list *map);
-void	check_walls(char *line, int map_length, int cur_line, int last_line);
-void	check_elements(char *line, int cur_line, int last_line);
+void	evaluate_maps(t_data *data);
+void	check_walls(t_data *data, char *line, int cur_line);
+void	check_elements(t_data *data, char *line, int cur_line);
 void	check_extension(char *file, int argc);
 void	exit_error(char *error_message);
 void	init_mlx(t_data *data);
 void	set_map(t_data *data);
 void	draw_map(t_data *data);
-void	print_tile(char c, t_data *data);
+void	choose_tile(char c, t_data *data);
+void	set_position(t_data *data, int x, int y, char element);
 
 #endif

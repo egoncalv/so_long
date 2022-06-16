@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/15 19:15:52 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 01:28:12 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,40 @@ void	parse_maps(char *argv, t_data *data)
 		ft_lstadd_back(&data->map, ft_lstnew(line));
 	}
 	free(line);
-	evaluate_maps(data->map);
+	set_map(data);
+	evaluate_maps(data);
 }
 
 //Iterates through the map (linked list), and invokes the functions
 //to verify if the map is valid or not.
-void	evaluate_maps(t_list *map)
+void	evaluate_maps(t_data *data)
 {
 	int			cur_line;
-	int			map_length;
-	int			last_line;
 	char		*line;
 	t_list		*tmp;
 
-	tmp = map;
-	map_length = ft_strlen(map->content);
-	last_line = ft_lstsize(map);
-	cur_line = 1;
+	tmp = data->map;
+	cur_line = 0;
 	while (tmp)
 	{
 		line = ft_strdup(tmp->content);
-		check_walls(line, map_length, cur_line, last_line);
-		check_elements(line, cur_line, last_line);
-		cur_line++;
+		check_walls(data, line, cur_line);
+		check_elements(data, line, cur_line);
 		tmp = tmp->next;
+		cur_line++;
 	}
 	free(line);
+	free(tmp);
 }
 
 //Checks if the map is surrounded
 //by walls, and returns an error if not
-void	check_walls(char *line, int map_length, int cur_line, int last_line)
+void	check_walls(t_data *data, char *line, int cur_line)
 {
 	int	x;
 
 	x = 0;
-	if (cur_line == 0 || cur_line == last_line)
+	if (cur_line == 0 || cur_line == ft_lstsize(data->map))
 	{
 		while (line[x] != '\n')
 		{
@@ -72,40 +70,38 @@ void	check_walls(char *line, int map_length, int cur_line, int last_line)
 			x++;
 		}
 	}
-	if ((int)ft_strlen(line) != map_length)
+	if ((int)ft_strlen(line) != data->map_info.map_length)
 		exit_error("The map must be rectangular!");
 	if (line[0] != '1')
 		exit_error("The map must be surrounded by Walls!");
-	if (line[map_length - 2] != '1')
+	if (line[data->map_info.map_length - 2] != '1')
 		exit_error("The map must be surrounded by Walls!");
 }
 
 /*Checks if there is at least one collectible, 
-one exit and one player in the map,returns an 
-error if it does not.*/
-void	check_elements(char *line, int cur_line, int last_line)
+one exit and one player in the map, sets their positions and returns an 
+error if any element is missing.*/
+void	check_elements(t_data *data, char *line, int cur_line)
 {
-	static int	start_position;
 	static int	collectibles;
-	static int	exit;
 	int			x;
 
 	x = 0;
 	while (line[x])
 	{
 		if (line[x] == 'P')
-			start_position++;
-		if (line[x] == 'C')
+			set_position(data, x, cur_line, line[x]);
+		else if (line[x] == 'C')
 			collectibles++;
-		if (line[x] == 'E')
-			exit++;
+		else if (line[x] == 'E')
+			set_position(data, x, cur_line, line[x]);
 		x++;
 	}
-	if (cur_line == last_line)
+	if (cur_line == ft_lstsize(data->map))
 	{
-		if (start_position != 1)
+		if (data->player.quantity != 1)
 			exit_error("The map needs one player!");
-		if (exit != 1)
+		if (data->exit.quantity != 1)
 			exit_error("The map needs one exit!");
 		if (collectibles < 1)
 			exit_error("The map needs at least one collectible!");

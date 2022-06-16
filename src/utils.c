@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/15 19:34:09 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 01:29:25 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,20 @@ void	set_map(t_data *data)
 	data->map_info.empty = "./assets/wood.xpm";
 	data->map_info.collect = "./assets/collectible.xpm";
 	data->map_info.exit = "./assets/door.xpm";
+}
+
+void	set_position(t_data *data, int x, int y, char element)
+{
+	if (element == 'P')
+	{
+		data->player.quantity = 1;
+		data->player.x = x;
+		data->player.y = y;
+	}
+	if (element == 'E')
+	{
+		data->exit.quantity = 1;
+		data->exit.x = x;
+		data->exit.y = y;
+	}
 }
