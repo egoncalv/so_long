@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/15 21:48:27 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 01:36:50 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_map(t_data *data)
 		{
 			choose_tile(line[x], data);
 			mlx_put_image_to_window(data->mlx, data->win,
-				data->img, x * data->img_width, y * data->img_heigth);
+				data->img, x * (data->img_width - 1), y * (data->img_heigth - 1));
 			x++;
 		}
 		y++;

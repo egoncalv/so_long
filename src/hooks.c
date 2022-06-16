@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/08 11:04:10 by erickbarros      ###   ########.fr       */
+/*   Created: 2022/06/16 01:55:59 by erickbarros       #+#    #+#             */
+/*   Updated: 2022/06/16 02:34:07 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	exit_error(char *error_message)
+int	key_hook(int keycode, t_data *data)
 {
-	ft_printf("Error\n%s\nClosing Program\n", error_message);
-	exit(0);
+	if (keycode == MAIN_PAD_ESC)
+		exit_clean(data);
+	return (0);
 }

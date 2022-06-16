@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 01:10:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 01:53:54 by erickbarros      ###   ########.fr       */
+/*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
+/*   Updated: 2022/06/16 02:35:59 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	main(int argc, char *argv[])
+void	exit_error(char *error_message)
 {
-	t_data		data;
+	ft_printf("Error\n%s\nClosing Program\n", error_message);
+	exit(0);
+}
 
-	check_extension(argv[1], argc);
-	parse_maps(argv[1], &data);
-	init_mlx(&data);
-	return (0);
+int	exit_clean(t_data *data)
+{
+	ft_printf("\nThanks for playing :)\n");
+	mlx_destroy_window(data->mlx, data->win);
+	exit(0);
 }

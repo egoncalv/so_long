@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 01:27:00 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 02:36:37 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_map
 	char	*empty;
 	char	*collect;
 	char	*exit;
-}			   t_map;
+}				t_map;
 
 typedef struct s_object
 {
@@ -64,10 +64,12 @@ void	check_walls(t_data *data, char *line, int cur_line);
 void	check_elements(t_data *data, char *line, int cur_line);
 void	check_extension(char *file, int argc);
 void	exit_error(char *error_message);
+int		exit_clean(t_data *data);
 void	init_mlx(t_data *data);
 void	set_map(t_data *data);
 void	draw_map(t_data *data);
 void	choose_tile(char c, t_data *data);
 void	set_position(t_data *data, int x, int y, char element);
+int		key_hook(int keycode, t_data *data);
 
 #endif

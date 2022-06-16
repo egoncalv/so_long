@@ -6,7 +6,7 @@
 #    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/06/15 17:26:45 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/06/16 02:22:40 by erickbarros      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,10 @@ NAME = so_long
 SRC =	src/main.c \
 		src/utils.c \
 		src/parse_maps.c \
-		src/error.c \
+		src/exit.c \
 		src/init_mlx.c \
 		src/draw_map.c \
+		src/hooks.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 

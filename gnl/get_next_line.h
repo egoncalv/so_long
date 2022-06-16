@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 19:35:42 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/05/29 22:42:20 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 02:05:08 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../ft_printf/includes/ft_printf.h"
 
 # ifndef BUFFER_SIZE
-#	define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);

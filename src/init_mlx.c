@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 00:13:10 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/15 19:26:15 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 02:36:29 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, width, heigth, "so_long");
 	draw_map(data);
+	mlx_key_hook(data->win, key_hook, data);
+	mlx_hook(data->win, 17, 0, exit_clean, data);
 	mlx_loop(data->mlx);
 }

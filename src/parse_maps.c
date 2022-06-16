@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 01:28:12 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 02:12:05 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	parse_maps(char *argv, t_data *data)
 	free(line);
 	set_map(data);
 	evaluate_maps(data);
+	close(fd);
 }
 
 //Iterates through the map (linked list), and invokes the functions
