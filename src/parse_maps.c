@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 05:43:13 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 06:10:46 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 void	parse_maps(t_data *data)
 {
 	int		fd;
-	int		count;
 	t_pos	pos;
 
 	data->map = malloc(sizeof(char **) * count_lines(data->argv) + 1);
@@ -36,6 +35,7 @@ void	parse_maps(t_data *data)
 	close(fd);
 	set_map(data);
 	check_walls(data);
+	check_elements(data);
 }
 
 //Checks if the map is surrounded
@@ -68,31 +68,30 @@ void	check_walls(t_data *data)
 }
 
 //Checks if there is at least one collectible, 
-//one exit and one player in the map, sets their positions and returns an 
+//one exit and one player in the map and returns an 
 //error if any element is missing.
-void	check_elements(t_data *data, char *line, int cur_line)
+void	check_elements(t_data *data)
 {
+	t_pos		pos;
 	static int	collectibles;
-	int			x;
+	static int	exit;
 
-	x = 0;
-	while (line[x])
+	pos.y = 0;
+	while (data->map[pos.y])
 	{
-		if (line[x] == 'P')
-			set_position(data, x, cur_line, line[x]);
-		else if (line[x] == 'C')
-			collectibles++;
-		else if (line[x] == 'E')
-			set_position(data, x, cur_line, line[x]);
-		x++;
+		pos.x = 0;
+		while (data->map[pos.y][pos.x])
+		{
+			if (data->map[pos.y][pos.x] == 'P')
+				set_player_position(data, pos.x, pos.y, 'P');
+			else if (data->map[pos.y][pos.x] == 'C')
+				collectibles++;
+			else if (data->map[pos.y][pos.x] == 'E')
+				exit++;
+			pos.x++;
+		}
+		pos.y++;
 	}
-	if (cur_line == ft_lstsize(data->map))
-	{
-		if (data->player.quantity != 1)
-			exit_error("The map needs one player!");
-		if (data->exit.quantity != 1)
-			exit_error("The map needs one exit!");
-		if (collectibles < 1)
-			exit_error("The map needs at least one collectible!");
-	}
+	if (data->player.quantity != 1 || exit != 1 || collectibles < 1)
+		exit_error("Some element is missing!");
 }

@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 04:55:16 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 06:04:45 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,13 @@ typedef struct s_data
 	char		*argv;
 	char		**map;
 	t_object	player;
-	t_object	exit;
 	t_map		map_info;
 }				t_data;
 
 void	parse_maps(t_data *data);
 int		count_lines(char *argv);
 void	check_walls(t_data *data);
-void	check_elements(t_data *data, char *line, int cur_line);
+void	check_elements(t_data *data);
 void	check_extension(char *file, int argc);
 void	exit_error(char *error_message);
 int		exit_clean(t_data *data);
@@ -74,7 +73,7 @@ void	init_mlx(t_data *data);
 void	set_map(t_data *data);
 void	draw_map(t_data *data);
 void	choose_tile(char c, t_data *data);
-void	set_position(t_data *data, int x, int y, char element);
+void	set_player_position(t_data *data, int x, int y, char element);
 int		key_hook(int keycode, t_data *data);
 int		move_player(t_data *data, int direction);
 void	print_player(t_data *data);
