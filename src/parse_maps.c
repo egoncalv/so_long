@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 06:10:46 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 06:58:02 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ void	check_walls(t_data *data)
 void	check_elements(t_data *data)
 {
 	t_pos		pos;
-	static int	collectibles;
 	static int	exit;
 
 	pos.y = 0;
+	data->collectibles = 0;
 	while (data->map[pos.y])
 	{
 		pos.x = 0;
@@ -85,13 +85,13 @@ void	check_elements(t_data *data)
 			if (data->map[pos.y][pos.x] == 'P')
 				set_player_position(data, pos.x, pos.y, 'P');
 			else if (data->map[pos.y][pos.x] == 'C')
-				collectibles++;
+				data->collectibles++;
 			else if (data->map[pos.y][pos.x] == 'E')
 				exit++;
 			pos.x++;
 		}
 		pos.y++;
 	}
-	if (data->player.quantity != 1 || exit != 1 || collectibles < 1)
+	if (data->player.quantity != 1 || exit != 1 || data->collectibles < 1)
 		exit_error("Some element is missing!");
 }

@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 06:28:27 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/16 07:00:17 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_object
 	int	quantity;
 	int	x;
 	int	y;
+	int	collected;
 }				t_object;
 
 typedef struct s_pos
@@ -59,6 +60,7 @@ typedef struct s_data
 	char		*argv;
 	char		**map;
 	t_object	player;
+	int			collectibles;
 	t_map		map_info;
 }				t_data;
 
@@ -75,6 +77,7 @@ void	draw_map(t_data *data);
 void	choose_tile(t_data *data, char c);
 void	set_player_position(t_data *data, int x, int y, char element);
 int		key_hook(int keycode, t_data *data);
-int		move_player(t_data *data, int direction);
+void	move_player(t_data *data, int direction);
+void	verify_object(t_data *data);
 
 #endif
