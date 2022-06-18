@@ -6,7 +6,7 @@
 #    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/06/16 06:14:10 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/06/18 23:26:30 by erickbarros      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC =	src/main.c \
 		src/exit.c \
 		src/init_mlx.c \
 		src/draw_map.c \
+		src/move_player.c \
 		src/hooks.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
