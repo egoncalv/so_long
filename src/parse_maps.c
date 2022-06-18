@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 06:58:02 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/06/19 00:37:08 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	parse_maps(t_data *data)
 	if (!data->map)
 		exit_error("Failed to allocate memory");
 	fd = open(data->argv, O_RDONLY);
+	if (fd < 0)
+		exit_error("The map does not exist");
 	pos.y = 0;
 	while (1)
 	{
