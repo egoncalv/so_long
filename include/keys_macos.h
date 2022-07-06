@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_MACOS_H
-# define KEYS_MACOS_H
+#ifndef KEYS_LINUX_H
+# define KEYS_LINUX_H
 
-# define KEY_UP			13
-# define KEY_DOWN		1
-# define KEY_LEFT		0
-# define KEY_RIGHT		2
+# define KEY_UP			119
+# define KEY_DOWN		115
+# define KEY_LEFT		97
+# define KEY_RIGHT		100
 
-# define MAIN_PAD_ESC		53
+# define MAIN_PAD_ESC		65307
 
 #endif

@@ -20,7 +20,7 @@ void	exit_error(char *error_message)
 
 int	exit_clean(t_data *data)
 {
-	ft_printf("\nThanks for playing :)\n");
-	mlx_destroy_window(data->mlx, data->win);
+	ft_printf("\nThanks for playing :) %d\n", data->steps);
+	//mlx_destroy_window(data->mlx, data->win);
 	exit(0);
 }

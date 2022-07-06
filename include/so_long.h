@@ -14,9 +14,9 @@
 # define SO_LONG_H
 
 # include "keys_macos.h"
-# include "../mlx/mlx.h"
 # include "../ft_printf/includes/ft_printf.h"
 # include "../gnl/get_next_line.h"
+# include <mlx.h>
 # include <fcntl.h>
 
 typedef struct s_map
@@ -52,16 +52,16 @@ typedef struct s_data
 	void		*win;
 	void		*img;
 	char		*addr;
-	int			bpp;
-	int			length;
-	int			endian;
-	int			img_width;
-	int			img_heigth;
+	int		bpp;
+	int		length;
+	int		endian;
+	int		img_width;
+	int		img_heigth;
 	char		*argv;
 	char		**map;
 	t_object	player;
-	int			collectibles;
-	int			steps;
+	int		collectibles;
+	int		steps;
 	t_map		map_info;
 }				t_data;
 

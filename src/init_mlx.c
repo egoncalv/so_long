@@ -21,6 +21,8 @@ void	init_mlx(t_data *data)
 	heigth = data->map_info.map_heigth * 64;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, width, heigth, "so_long");
+	data->player.collected = 0;
+	data->steps = 1;
 	draw_map(data);
 	mlx_key_hook(data->win, key_hook, data);
 	mlx_hook(data->win, 17, 0, exit_clean, data);

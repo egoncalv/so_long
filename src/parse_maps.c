@@ -77,8 +77,9 @@ void	check_elements(t_data *data)
 	t_pos		pos;
 	static int	exit;
 
-	pos.y = 0;
+	data->player.quantity = 0;
 	data->collectibles = 0;
+	pos.y = 0;
 	while (data->map[pos.y])
 	{
 		pos.x = 0;

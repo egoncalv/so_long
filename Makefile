@@ -10,9 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
-MLXFLAGS = -lmlx -Lmlx -framework OpenGL -framework AppKit
+INCLUDE = -I/usr/include -Imlx_linux -O3
+
+MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 NAME = so_long
 
@@ -42,31 +44,25 @@ CURSIVE='\033[3m'
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo $(CURSIVE)$(GRAY) "     - Making mlx..." $(NONE)
-	@$(MAKE) -C mlx
 	@echo $(CURSIVE)$(GRAY) "     - Making ft_printf..." $(NONE)
 	@$(MAKE) -C ft_printf
 	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)" $(NONE)
-	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJ) $(LIBS_OBJ) -o $(NAME)
-	@mv mlx/libmlx.dylib .
+	@$(CC) $(CFLAG) $(OBJ) $(LIBS_OBJ) $(MLXFLAGS) -o $(NAME)
 	@echo $(CURSIVE)$(GREEN)"$(NAME) was created!"
 	
 %.o: %.c
 	@echo $(CURSIVE)$(GRAY) "     - Making Object Files..." $(NONE)
-	@gcc $(CFLAGS) -c $< -o $@
+	@gcc $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	@$(MAKE) -C mlx clean
 	@$(MAKE) -C ft_printf clean
 	@rm -rf src/*.o
 	@rm -rf gnl/*.o
 	@echo $(CURSIVE)$(GRAY)"Object files were cleaned"$(NONE)
 
 fclean: clean
-	@$(MAKE) -C mlx clean
 	@$(MAKE) -C ft_printf fclean
 	@rm -f $(NAME)
-	@rm -f libmlx.dylib
 	@echo $(CURSIVE)$(GRAY)"So_long was cleaned"$(NONE)
 	
 re: fclean $(NAME)
