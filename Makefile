@@ -51,6 +51,10 @@ $(NAME): $(OBJ)
 	@echo $(CURSIVE)$(GREEN)"$(NAME) was created!"
 	
 %.o: %.c
+	@echo $(CURSIVE)$(GRAY) "     - Making MiniLibx..." $(NONE)
+	@$(MAKE) -C mlx_linux
+	@sudo cp mlx_linux/libmlx.a /usr/local/lib/
+	@sudo cp mlx_linux/mlx.h /usr/local/include/
 	@echo $(CURSIVE)$(GRAY) "     - Making Object Files..." $(NONE)
 	@gcc $(CFLAGS) $(INCLUDE) -c $< -o $@
 
