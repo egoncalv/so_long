@@ -43,7 +43,7 @@ CURSIVE='\033[3m'
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) mlx
 	@echo $(CURSIVE)$(GRAY) "     - Making ft_printf..." $(NONE)
 	@$(MAKE) -C ft_printf
 	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)" $(NONE)
@@ -53,10 +53,13 @@ $(NAME): $(OBJ)
 %.o: %.c
 	@echo $(CURSIVE)$(GRAY) "     - Making MiniLibx..." $(NONE)
 	@$(MAKE) -C mlx_linux
-	@sudo cp mlx_linux/libmlx.a /usr/local/lib/
-	@sudo cp mlx_linux/mlx.h /usr/local/include/
 	@echo $(CURSIVE)$(GRAY) "     - Making Object Files..." $(NONE)
 	@gcc $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+mlx:
+	@sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+	@sudo cp mlx_linux/libmlx.a /usr/local/lib/
+	@sudo cp mlx_linux/mlx.h /usr/local/include/
 
 clean:
 	@$(MAKE) -C ft_printf clean
