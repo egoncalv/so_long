@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 01:55:59 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/19 00:07:20 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/09/09 17:59:42 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	key_hook(int keycode, t_data *data)
 	draw_map(data);
 	return (0);
 }
+
+//This function verifies if the player gets an collectable or if it is on the exit.
 
 void	verify_object(t_data *data)
 {

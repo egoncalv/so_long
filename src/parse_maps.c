@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/09/09 17:22:29 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:55:44 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	check_walls(t_data *data)
 }
 
 //Checks if there is at least one collectible, 
-//one exit and one player in the map and returns an 
-//error if any element is missing.
+//only one exit and only one player in the map and returns an 
+//error if any element is missing or exceeding.
 void	check_elements(t_data *data)
 {
 	t_pos		pos;

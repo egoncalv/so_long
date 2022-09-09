@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:10:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/19 01:11:36 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/09/09 17:57:10 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+//Creates a struct that will hold our game's informations,
+//and calls the functions responsible for checking for errors,
+//parsing maps and rendering the game
 
 int	main(int argc, char *argv[])
 {
