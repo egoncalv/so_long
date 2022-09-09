@@ -6,7 +6,7 @@
 #    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/06/18 23:26:30 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/09/09 16:28:34 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ CURSIVE='\033[3m'
 
 all: $(NAME)
 
-$(NAME): $(OBJ) mlx
+$(NAME): $(OBJ)
 	@echo $(CURSIVE)$(GRAY) "     - Making ft_printf..." $(NONE)
 	@$(MAKE) -C ft_printf
 	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)" $(NONE)
@@ -55,11 +55,6 @@ $(NAME): $(OBJ) mlx
 	@$(MAKE) -C mlx_linux
 	@echo $(CURSIVE)$(GRAY) "     - Making Object Files..." $(NONE)
 	@gcc $(CFLAGS) $(INCLUDE) -c $< -o $@
-
-mlx:
-	@sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
-	@sudo cp mlx_linux/libmlx.a /usr/local/lib/
-	@sudo cp mlx_linux/mlx.h /usr/local/include/
 
 clean:
 	@$(MAKE) -C ft_printf clean
