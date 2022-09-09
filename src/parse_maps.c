@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_maps.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/19 00:37:08 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/09/09 17:22:29 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	check_elements(t_data *data)
 		pos.y++;
 	}
 	if (data->player.quantity != 1 || exit != 1 || data->collectibles < 1)
-		exit_error("Some element is missing!");
+		exit_error("The map is not valid");
 }
