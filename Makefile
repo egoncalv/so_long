@@ -33,39 +33,32 @@ OBJ = $(SRC:.c=.o)
 
 LIBS_OBJ =	ft_printf/src/*.o \
 			ft_printf/libft/*.o \
-			
-
-NONE='\033[0m'
-GREEN='\033[32m'
-YELLOW='\033[33m'
-GRAY='\033[2;37m'
-CURSIVE='\033[3m'
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo $(CURSIVE)$(GRAY) "     - Making ft_printf..." $(NONE)
+	@echo "     - Making ft_printf..."
 	@$(MAKE) -C ft_printf
-	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)" $(NONE)
+	@echo "     - Compiling $(NAME)"
 	@$(CC) $(CFLAG) $(OBJ) $(LIBS_OBJ) $(MLXFLAGS) -o $(NAME)
-	@echo $(CURSIVE)$(GREEN)"$(NAME) was created!"
+	@echo "$(NAME) was created!"
 	
 %.o: %.c
-	@echo $(CURSIVE)$(GRAY) "     - Making MiniLibx..." $(NONE)
+	@echo "     - Making MiniLibx..." 
 	@$(MAKE) -C mlx_linux
-	@echo $(CURSIVE)$(GRAY) "     - Making Object Files..." $(NONE)
+	@echo "     - Making Object Files..."
 	@gcc $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	@$(MAKE) -C ft_printf clean
 	@rm -rf src/*.o
 	@rm -rf gnl/*.o
-	@echo $(CURSIVE)$(GRAY)"Object files were cleaned"$(NONE)
+	@echo "Object files were cleaned"
 
 fclean: clean
 	@$(MAKE) -C ft_printf fclean
 	@rm -f $(NAME)
-	@echo $(CURSIVE)$(GRAY)"So_long was cleaned"$(NONE)
+	@echo "So_long was cleaned"
 	
 re: fclean $(NAME)
 
