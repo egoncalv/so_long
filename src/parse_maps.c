@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/09/09 17:55:44 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/14 13:02:46 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	parse_maps(t_data *data)
 	set_map(data);
 	check_walls(data);
 	check_elements(data);
+	find_path(data);
 }
 
 //Checks if the map is surrounded

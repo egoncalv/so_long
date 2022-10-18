@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
+#    By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/09/09 16:28:34 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/10/14 13:01:52 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC =	src/main.c \
 		src/hooks.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
+		src/find_path.c \
 
 OBJ = $(SRC:.c=.o)
 
