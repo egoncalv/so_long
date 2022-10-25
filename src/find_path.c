@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:00:54 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/25 17:52:57 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:08:13 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ int	find_path(t_data *data)
 	queue = create_queue(pos, 0, 0);
 	while (queue)
 	{
-		if (isvalid(data->map[queue->y + 1][queue->x]) && visited[queue->y + 1][queue->x] == '0')
-			ft_queueadd_back(&queue, create_queue(pos, 1, 0));
-		if (isvalid(data->map[queue->y - 1][queue->x]) && visited[queue->y + 1][queue->x] == '0')
-			ft_queueadd_back(&queue, create_queue(pos, -1, 0));
-		if (isvalid(data->map[queue->y][queue->x + 1]) && visited[queue->y + 1][queue->x] == '0')
-			ft_queueadd_back(&queue, create_queue(pos, 0, 1));
-		if (isvalid(data->map[queue->y][queue->x - 1]) && visited[queue->y + 1][queue->x] == '0')
-			ft_queueadd_back(&queue, create_queue(pos, 0, -1));
 		visited[queue->y][queue->x] = '1';
 		int i = 0;
 		while (visited[i])
@@ -44,6 +36,14 @@ int	find_path(t_data *data)
 		ft_printf("\n");
 		pos->y = queue->y;
 		pos->x = queue->x;
+		if (isvalid(data->map[queue->y + 1][queue->x]))
+			ft_queueadd_back(&queue, create_queue(pos, 1, 0));
+		if (isvalid(data->map[queue->y - 1][queue->x]))
+			ft_queueadd_back(&queue, create_queue(pos, -1, 0));
+		if (isvalid(data->map[queue->y][queue->x + 1]))
+			ft_queueadd_back(&queue, create_queue(pos, 0, 1));
+		if (isvalid(data->map[queue->y][queue->x - 1]))
+			ft_queueadd_back(&queue, create_queue(pos, 0, -1));
 		queue = queue->next;
 	}
 	return (1);
