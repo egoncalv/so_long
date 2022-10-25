@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/24 17:03:06 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:42:02 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ typedef struct s_data
 	t_map		map_info;
 }				t_data;
 
+typedef struct s_queue
+{
+	int				x;
+	int				y;
+	struct	s_queue	*next;
+}				t_queue;
+
 void	parse_maps(t_data *data);
 int		count_lines(char *argv);
 void	check_walls(t_data *data);
@@ -86,5 +93,9 @@ int		move_left(t_data *data);
 int		move_right(t_data *data);
 int		find_path(t_data *data);
 char	**create_array(char **array, t_data *data);
+t_queue	*create_queue(t_pos *pos, int add_y, int add_x);
+int		isvalid(char c);
+void	ft_queueadd_back(t_queue **queue, t_queue *new);
+t_queue	*ft_queuelast(t_queue *queue);
 
 #endif
