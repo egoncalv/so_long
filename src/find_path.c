@@ -6,17 +6,19 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:00:54 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/25 18:08:13 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:59:33 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	find_path(t_data *data)
+int	find_path(t_data *data, int goal_y, int goal_x)
 {
 	char	**visited;
 	t_queue *queue;
+	t_queue *tmp;;
 	t_pos	*pos;
+
 
 	pos = malloc(sizeof(t_pos *));
 	visited = 0;
@@ -27,26 +29,28 @@ int	find_path(t_data *data)
 	while (queue)
 	{
 		visited[queue->y][queue->x] = '1';
-		int i = 0;
-		while (visited[i])
-		{
-			ft_printf("%s", visited[i]);
-			i++;
-		}
-		ft_printf("\n");
 		pos->y = queue->y;
 		pos->x = queue->x;
-		if (isvalid(data->map[queue->y + 1][queue->x]))
+		if (pos->y == goal_y && pos->x == goal_x)
+		{
+			free(visited);
+			free(queue);
+			return (1);
+		}
+		if (isvalid(data->map[queue->y + 1][queue->x], visited[queue->y + 1][queue->x]))
 			ft_queueadd_back(&queue, create_queue(pos, 1, 0));
-		if (isvalid(data->map[queue->y - 1][queue->x]))
+		if (isvalid(data->map[queue->y - 1][queue->x], visited[queue->y - 1][queue->x]))
 			ft_queueadd_back(&queue, create_queue(pos, -1, 0));
-		if (isvalid(data->map[queue->y][queue->x + 1]))
+		if (isvalid(data->map[queue->y][queue->x + 1], visited[queue->y][queue->x + 1]))
 			ft_queueadd_back(&queue, create_queue(pos, 0, 1));
-		if (isvalid(data->map[queue->y][queue->x - 1]))
+		if (isvalid(data->map[queue->y][queue->x - 1], visited[queue->y][queue->x - 1]))
 			ft_queueadd_back(&queue, create_queue(pos, 0, -1));
-		queue = queue->next;
+		tmp = queue->next;
+		free(queue);
+		queue = tmp;	
 	}
-	return (1);
+	free(visited);
+	return (0);
 }
 
 char	**create_array(char **array, t_data *data)
@@ -113,9 +117,10 @@ t_queue	*ft_queuelast(t_queue *queue)
 	return (queue);
 }
 
-int	isvalid(char c)
+
+int	isvalid(char c, char visited)
 {
-	if (c == '1' || c =='E')
+	if (c == '1' || visited == '1')
 		return (0);
 	else
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/14 13:02:46 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:41:33 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	parse_maps(t_data *data)
 	set_map(data);
 	check_walls(data);
 	check_elements(data);
-	find_path(data);
+	if (find_path(data, data->map_info.exit_y, data->map_info.exit_x) == 0)
+		exit_error("Exit not reachable. There is no valid path");
+	else
+		ft_printf("Valid Map");
 }
 
 //Checks if the map is surrounded
@@ -89,9 +92,17 @@ void	check_elements(t_data *data)
 			if (data->map[pos.y][pos.x] == 'P')
 				set_player_position(data, pos.x, pos.y, 'P');
 			else if (data->map[pos.y][pos.x] == 'C')
+			{
+				if (!find_path(data, pos.y, pos.x))
+					exit_error("A collectible is not reachable");
 				data->collectibles++;
+			}
 			else if (data->map[pos.y][pos.x] == 'E')
+			{
+				data->map_info.exit_y = pos.y;
+				data->map_info.exit_x = pos.x;
 				exit++;
+			}
 			pos.x++;
 		}
 		pos.y++;
