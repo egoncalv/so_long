@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/16 06:57:07 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/10/27 13:41:06 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ int	count_lines(char *argv)
 	return (count);
 }
 
-void	check_extension(char *file, int argc)
+void	check_extension(char *file, int argc, t_data *data)
 {
 	char	*extension;
 
 	if (argc < 2)
-		exit_error("You must pass one valid map as argument!");
+		exit_error("You must pass one valid map as argument!", data);
 	extension = ft_strrchr(file, '.');
 	if (!extension || ft_strncmp(extension, ".ber", 4) != 0)
-		exit_error("The map needs a .ber extension!");
+		exit_error("The map needs a .ber extension!", data);
 }
 
 void	set_map(t_data *data)

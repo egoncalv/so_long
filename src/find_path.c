@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:00:54 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/27 01:12:17 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:55:22 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	find_path(t_data *data, int goal_y, int goal_x)
 	visited = create_array(visited, data);
 	pos->y = data->player.y;
 	pos->x = data->player.x;
-	queue = create_queue(pos, 0, 0);
+	queue = create_queue(pos, data, 0, 0);
 	head = queue;
 	while (queue)
 	{
@@ -38,13 +38,13 @@ int	find_path(t_data *data, int goal_y, int goal_x)
 			return (1);
 		}
 		if (isvalid(data->map[queue->y + 1][queue->x], visited[queue->y + 1][queue->x]))
-			ft_queueadd_back(&queue, create_queue(pos, 1, 0));
+			ft_queueadd_back(&queue, create_queue(pos, data, 1, 0));
 		if (isvalid(data->map[queue->y - 1][queue->x], visited[queue->y - 1][queue->x]))
-			ft_queueadd_back(&queue, create_queue(pos, -1, 0));
+			ft_queueadd_back(&queue, create_queue(pos, data, -1, 0));
 		if (isvalid(data->map[queue->y][queue->x + 1], visited[queue->y][queue->x + 1]))
-			ft_queueadd_back(&queue, create_queue(pos, 0, 1));
+			ft_queueadd_back(&queue, create_queue(pos, data, 0, 1));
 		if (isvalid(data->map[queue->y][queue->x - 1], visited[queue->y][queue->x - 1]))
-			ft_queueadd_back(&queue, create_queue(pos, 0, -1));
+			ft_queueadd_back(&queue, create_queue(pos, data, 0, -1));
 		queue = queue->next;
 	}
 	free_dfsmemory(visited, head);
@@ -86,6 +86,11 @@ void	free_dfsmemory(char **visited, t_queue *head)
 {
 	t_queue	*tmp;
 
+	/*while (*visited)
+	{
+		free(*visited);
+		visited++;
+	}*/
 	free(visited);
 	while (head)
 	{

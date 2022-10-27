@@ -6,19 +6,19 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:43:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/27 01:13:18 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:41:37 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_queue	*create_queue(t_pos *pos, int add_y, int add_x)
+t_queue	*create_queue(t_pos *pos, t_data *data, int add_y, int add_x)
 {
 	t_queue	*queue;
 
 	queue = (t_queue *)malloc(sizeof(t_queue));
 	if (!queue)
-		exit_error("Malloc Error");
+		exit_error("Malloc Error", data);
 	queue->y = pos->y + add_y;
 	queue->x = pos->x + add_x;
 	queue->next = NULL;
