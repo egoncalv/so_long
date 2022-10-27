@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/26 15:46:00 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:51:43 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		count_lines(char *argv);
 void	check_walls(t_data *data);
 void	check_elements(t_data *data);
 void	check_extension(char *file, int argc);
-void	exit_error(char *error_message);
+void	exit_error(char *error_message, t_data *data);
 int		exit_clean(t_data *data);
 void	init_mlx(t_data *data);
 void	set_map(t_data *data);
@@ -99,5 +99,6 @@ void	ft_queueadd_back(t_queue **queue, t_queue *new);
 t_queue	*ft_queuelast(t_queue *queue);
 void	ft_queueclear(t_queue **queue, void (*del)(void *));
 void	ft_queuedelone(t_list *queue, void (*del)(void*));
+void	free_dfsmemory(char **visited, t_queue *head);
 
 #endif

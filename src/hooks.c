@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 01:55:59 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/09/09 17:59:42 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:44:23 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	key_hook(int keycode, t_data *data)
 	return (0);
 }
 
-//This function verifies if the player gets an collectable or if it is on the exit.
+//This function verifies if the player
+//gets an collectable or if it is on the exit.
 
 void	verify_object(t_data *data)
 {

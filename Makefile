@@ -6,11 +6,11 @@
 #    By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 01:09:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/10/14 13:01:52 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/10/26 17:43:55 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 INCLUDE = -I/usr/include -Imlx_linux -O3
 
@@ -29,6 +29,7 @@ SRC =	src/main.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 		src/find_path.c \
+		src/queue_utils.c \
 
 OBJ = $(SRC:.c=.o)
 
