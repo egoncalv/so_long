@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:00:54 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/26 17:52:09 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/27 01:12:17 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 int	find_path(t_data *data, int goal_y, int goal_x)
 {
 	char	**visited;
-	t_queue *queue;
-	t_queue *head;
+	t_queue	*queue;
+	t_queue	*head;
 	t_pos	*pos;
-
 
 	pos = malloc(sizeof(t_pos *));
 	visited = 0;
@@ -56,6 +55,7 @@ int	find_path(t_data *data, int goal_y, int goal_x)
 char	**create_array(char **array, t_data *data)
 {
 	int	i;
+
 	array = malloc(sizeof(char *) * data->map_info.map_heigth);
 	if (!array)
 		exit_error("Malloc Error", data);
@@ -85,7 +85,7 @@ int	isvalid(char c, char visited)
 void	free_dfsmemory(char **visited, t_queue *head)
 {
 	t_queue	*tmp;
-	
+
 	free(visited);
 	while (head)
 	{

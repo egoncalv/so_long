@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:43:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/26 17:43:31 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/27 01:13:18 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ t_queue	*ft_queuelast(t_queue *queue)
 	}
 	return (queue);
 }
-

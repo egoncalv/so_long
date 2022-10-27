@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/27 00:54:55 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/27 01:12:34 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	parse_maps(t_data *data)
 	close(fd);
 	set_map(data);
 	check_walls(data);
+	check_player(data);
 	check_elements(data);
 	if (find_path(data, data->map_info.exit_y, data->map_info.exit_x) == 0)
 		exit_error("Exit not reachable. There is no valid path", data);
@@ -69,17 +70,13 @@ void	check_walls(t_data *data)
 	}
 }
 
-//Checks if there is at least one collectible, 
-//only one exit and only one player in the map and returns an 
-//error if any element is missing or exceeding.
-void	check_elements(t_data *data)
+//Check if there is only and at least one player in the map
+void	check_player(t_data *data)
 {
-	t_pos		pos;
-	static int	exit;
+	t_pos	pos;
 
-	data->player.quantity = 0;
-	data->collectibles = 0;
 	pos.y = 0;
+	data->player.quantity = 0;
 	while (data->map[pos.y])
 	{
 		pos.x = 0;
@@ -91,6 +88,19 @@ void	check_elements(t_data *data)
 		}
 		pos.y++;
 	}
+	if (data->player.quantity != 1)
+		exit_error("The map is not valid", data);
+}
+
+//Checks if there is at least one collectible 
+//and only one exit in the map and returns an 
+//error if any element is missing or exceeding.
+void	check_elements(t_data *data)
+{
+	t_pos		pos;
+	static int	exit;
+
+	data->collectibles = 0;
 	pos.y = 0;
 	while (data->map[pos.y])
 	{
@@ -113,6 +123,6 @@ void	check_elements(t_data *data)
 		}
 		pos.y++;
 	}
-	if (data->player.quantity != 1 || exit != 1 || data->collectibles < 1)
+	if (exit != 1 || data->collectibles < 1)
 		exit_error("The map is not valid", data);
 }

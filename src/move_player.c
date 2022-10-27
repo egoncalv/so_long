@@ -6,14 +6,16 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 23:23:16 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/09/09 17:58:25 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/27 01:13:46 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-//These functions are called when one of the keys responsible for moving the player
-//are pressed. They verify if the movement is possible, then change the array containing the map.
+//These functions are called when one of 
+//the keys responsible for moving the player
+//are pressed. They verify if the movement 
+//is possible, then change the array containing the map.
 
 int	move_up(t_data *data)
 {

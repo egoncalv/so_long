@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/10/26 17:51:25 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/27 01:10:08 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	exit_error(char *error_message, t_data *data)
 {
 	ft_printf("Error\n%s\nClosing Program\n", error_message);
 	mlx_destroy_window(data->mlx, data->win);
-	free(data);
+	free(data->map);
 	exit(0);
 }
 
