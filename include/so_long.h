@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/28 16:20:03 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:37:11 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ typedef struct s_data
 	void		*win;
 	void		*img;
 	char		*addr;
-	int		bpp;
-	int		length;
-	int		endian;
-	int		img_width;
-	int		img_heigth;
+	int			bpp;
+	int			length;
+	int			endian;
+	int			img_width;
+	int			img_heigth;
 	char		*argv;
 	char		**map;
 	t_object	player;
-	int		collectibles;
-	int		steps;
-	t_pos	goal;
+	int			collectibles;
+	int			steps;
+	t_pos		goal;
 	t_map		map_info;
 }				t_data;
 
@@ -70,7 +70,7 @@ typedef struct s_queue
 {
 	int				x;
 	int				y;
-	struct	s_queue	*next;
+	struct s_queue	*next;
 }				t_queue;
 
 void	parse_maps(t_data *data);
@@ -103,6 +103,7 @@ void	ft_queueadd_back(t_queue **queue, t_queue *new);
 t_queue	*ft_queuelast(t_queue *queue);
 void	ft_queueclear(t_queue **queue, void (*del)(void *));
 void	ft_queuedelone(t_list *queue, void (*del)(void*));
-void	free_dfsmemory(char **visited, t_queue *head, t_pos *pos);
+int		free_dfsmemory(char **visited, t_queue *head, t_pos *pos);
+void	add_node(t_data *data, t_queue *queue, char **visited, t_pos *pos);
 
 #endif
