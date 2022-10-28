@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/27 14:54:48 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:20:03 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_data
 	t_object	player;
 	int		collectibles;
 	int		steps;
+	t_pos	goal;
 	t_map		map_info;
 }				t_data;
 
@@ -75,11 +76,12 @@ typedef struct s_queue
 void	parse_maps(t_data *data);
 int		count_lines(char *argv);
 void	check_walls(t_data *data);
-void	check_elements(t_data *data);
+void	check_collectibles(t_data *data);
 void	check_extension(char *file, int argc, t_data *data);
 void	check_player(t_data *data);
-void	exit_error(char *error_message, t_data *data);
-void	exit_clean(t_data *data);
+void	check_exit(t_data *data);
+int		exit_error(char *error_message, t_data *data);
+int		exit_clean(t_data *data);
 void	init_mlx(t_data *data);
 void	set_map(t_data *data);
 void	draw_map(t_data *data);
@@ -93,6 +95,7 @@ int		move_down(t_data *data);
 int		move_left(t_data *data);
 int		move_right(t_data *data);
 int		find_path(t_data *data, int goal_y, int goal_x);
+int		dfs(t_data *data, char **visited, t_queue *queue, t_pos *pos);
 char	**create_array(char **array, t_data *data);
 t_queue	*create_queue(t_pos *pos, t_data *data, int add_y, int add_x);
 int		isvalid(char c, char visited);
@@ -100,6 +103,6 @@ void	ft_queueadd_back(t_queue **queue, t_queue *new);
 t_queue	*ft_queuelast(t_queue *queue);
 void	ft_queueclear(t_queue **queue, void (*del)(void *));
 void	ft_queuedelone(t_list *queue, void (*del)(void*));
-void	free_dfsmemory(char **visited, t_queue *head);
+void	free_dfsmemory(char **visited, t_queue *head, t_pos *pos);
 
 #endif

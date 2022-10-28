@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:00:54 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/27 15:55:22 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:19:55 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	find_path(t_data *data, int goal_y, int goal_x)
 		pos->x = queue->x;
 		if (pos->y == goal_y && pos->x == goal_x)
 		{
-			free_dfsmemory(visited, head);
-			free(pos);
+			free_dfsmemory(visited, head, pos);
 			return (1);
 		}
 		if (isvalid(data->map[queue->y + 1][queue->x], visited[queue->y + 1][queue->x]))
@@ -47,8 +46,7 @@ int	find_path(t_data *data, int goal_y, int goal_x)
 			ft_queueadd_back(&queue, create_queue(pos, data, 0, -1));
 		queue = queue->next;
 	}
-	free_dfsmemory(visited, head);
-	free(pos);
+	free_dfsmemory(visited, head, pos);
 	return (0);
 }
 
@@ -57,7 +55,7 @@ char	**create_array(char **array, t_data *data)
 	int	i;
 
 	array = malloc(sizeof(char *) * data->map_info.map_heigth);
-	if (!array)
+	if (!array)			
 		exit_error("Malloc Error", data);
 	i = 0;
 	while (i < data->map_info.map_heigth)
@@ -82,7 +80,7 @@ int	isvalid(char c, char visited)
 		return (1);
 }
 
-void	free_dfsmemory(char **visited, t_queue *head)
+void	free_dfsmemory(char **visited, t_queue *head, t_pos *pos)
 {
 	t_queue	*tmp;
 
@@ -98,4 +96,5 @@ void	free_dfsmemory(char **visited, t_queue *head)
 		head = tmp->next;
 		free(tmp);
 	}
+	free(pos);
 }
