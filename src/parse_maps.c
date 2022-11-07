@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/07 17:31:26 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:58:23 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	parse_maps(t_data *data)
 	t_pos	pos;
 
 	data->map = malloc(sizeof(*data->map) * count_lines(data->argv) + 1);
+	data->map[count_lines(data->argv) - 1] = "\0";
 	if (!data->map)
 		exit_error("Failed to allocate memory", data);
 	fd = open(data->argv, O_RDONLY);
 	if (fd < 0)
 		exit_error("The map does not exist", data);
 	pos.y = 0;
-	data->map[pos.y] = get_next_line(fd);
-	while (data->map[pos.y])
-		data->map[++pos.y] = get_next_line(fd);
-	data->map[++pos.y] = 0;
+	while (pos.y < count_lines(data->argv))//o loop corre demasiadas vezes
+		data->map[pos.y++] = get_next_line(fd);
+	pos.y = 0;
 	close(fd);
 	set_map(data);
 	check_walls(data);

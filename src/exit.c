@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/07 17:32:56 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:39:39 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	exit_error(char *error_message, t_data *data)
 	i = -1;
 	while (data->map[++i])
 		free(data->map[i]);
-	free(data->map[++i]);
 	free(data->map);
 	exit(0);
 }
@@ -38,7 +37,6 @@ int	exit_clean(t_data *data)
 	i = -1;
 	while (data->map[++i])
 		free(data->map[i]);
-	free(data->map[++i]);
 	free(data->map);
 	exit(0);
 }
