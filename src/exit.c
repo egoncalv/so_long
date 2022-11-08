@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/08 15:40:48 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:50:58 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	exit_error(char *error_message, t_data *data)
 	while (++i < data->map_info.map_heigth)
 		free(data->map[i]);
 	free(data->map);
+	free(data->mlx);
 	exit(0);
 }
 
@@ -43,5 +44,6 @@ int	exit_clean(t_data *data)
 	while (++i < data->map_info.map_heigth)
 		free(data->map[i]);
 	free(data->map);
+	free(data->mlx);
 	exit(0);
 }

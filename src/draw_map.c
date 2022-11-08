@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/08 15:47:19 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 19:44:22 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	draw_map(t_data *data)
 {
 	t_pos	pos;
+	char	*steps;
 
 	pos.y = 0;
 	while (pos.y < data->map_info.map_heigth)
@@ -30,6 +31,9 @@ void	draw_map(t_data *data)
 		}
 		pos.y++;
 	}
+	steps = ft_itoa(data->steps);
+	mlx_string_put(data->mlx, data->win, 10, 10, 0XFFFFFF, steps);
+	free(steps);
 }
 
 void	choose_tile(t_data *data, char c)
@@ -51,8 +55,6 @@ void	choose_tile(t_data *data, char c)
 			tile = ft_strdup(data->map_info.exit);
 		data->img = mlx_xpm_file_to_image(data->mlx, tile,
 				&data->img_width, &data->img_heigth);
-		data->addr = mlx_get_data_addr(data->img, &data->bpp,
-				&data->length, &data->endian);
 	}
 	free (tile);
 }
