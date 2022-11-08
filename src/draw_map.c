@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/08 15:29:20 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:47:19 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	draw_map(t_data *data)
 			mlx_put_image_to_window(data->mlx, data->win,
 				data->img, pos.x * (data->img_width - 1), pos.y
 				* (data->img_heigth - 1));
-			//free(data->img);
 			pos.x++;
 		}
 		pos.y++;
