@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/10/27 15:56:10 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:29:20 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_map(t_data *data)
 	t_pos	pos;
 
 	pos.y = 0;
-	while (data->map[pos.y])
+	while (pos.y < data->map_info.map_heigth)
 	{
 		pos.x = 0;
 		while (data->map[pos.y][pos.x])

@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/07 17:39:39 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:30:05 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	exit_error(char *error_message, t_data *data)
 {
 	int	i;
+
 	ft_printf("Error\n%s\nClosing Program\n", error_message);
-	if (data->img)
+	if (data->mlx && data->img)
 		mlx_destroy_image(data->mlx, data->img);
 	if (data->mlx && data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	i = -1;
-	while (data->map[++i])
+	while (++i < data->map_info.map_heigth)
 		free(data->map[i]);
 	free(data->map);
 	exit(0);
@@ -35,7 +36,7 @@ int	exit_clean(t_data *data)
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
 	i = -1;
-	while (data->map[++i])
+	while (++i < data->map_info.map_heigth)
 		free(data->map[i]);
 	free(data->map);
 	exit(0);

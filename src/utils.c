@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/08 13:47:53 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 13:54:54 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	check_extension(char *file, int argc, t_data *data)
 void	set_map(t_data *data)
 {
 	data->map_info.map_length = ft_strlen(data->map[0]);
-	data->map_info.map_heigth = count_lines(data->argv);
 	data->map_info.wall = "./assets/wall.xpm";
 	data->map_info.player = "./assets/player.xpm";
 	data->map_info.empty = "./assets/wood.xpm";

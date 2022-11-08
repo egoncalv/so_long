@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/07 18:58:23 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:28:50 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@ void	parse_maps(t_data *data)
 	int		fd;
 	t_pos	pos;
 
-	data->map = malloc(sizeof(*data->map) * count_lines(data->argv) + 1);
-	data->map[count_lines(data->argv) - 1] = "\0";
+	data->map_info.map_heigth = count_lines(data->argv);
+	data->map = malloc(sizeof(*data->map) * data->map_info.map_heigth + 1);
+	data->map[data->map_info.map_heigth - 1] = "\0";
 	if (!data->map)
 		exit_error("Failed to allocate memory", data);
 	fd = open(data->argv, O_RDONLY);
 	if (fd < 0)
 		exit_error("The map does not exist", data);
 	pos.y = 0;
-	while (pos.y < count_lines(data->argv))//o loop corre demasiadas vezes
+	while (pos.y < data->map_info.map_heigth)
 		data->map[pos.y++] = get_next_line(fd);
 	pos.y = 0;
 	close(fd);
@@ -46,7 +47,7 @@ void	check_walls(t_data *data)
 	t_pos	pos;
 
 	pos.y = 0;
-	while (data->map[pos.y] != 0)
+	while (pos.y < data->map_info.map_heigth)
 	{
 		pos.x = 0;
 		if ((int)ft_strlen(data->map[pos.y]) != data->map_info.map_length)
@@ -75,7 +76,7 @@ void	check_player(t_data *data)
 
 	pos.y = 0;
 	data->player.quantity = 0;
-	while (data->map[pos.y])
+	while (pos.y < data->map_info.map_heigth)
 	{
 		pos.x = 0;
 		while (data->map[pos.y][pos.x])
@@ -97,7 +98,7 @@ void	check_exit(t_data *data)
 
 	pos.y = 0;
 	exit = 0;
-	while (data->map[pos.y])
+	while (pos.y < data->map_info.map_heigth)
 	{
 		pos.x = 0;
 		while (data->map[pos.y][pos.x])
@@ -128,7 +129,7 @@ void	check_collectibles(t_data *data)
 
 	data->collectibles = 0;
 	pos.y = 0;
-	while (data->map[pos.y])
+	while (pos.y < data->map_info.map_heigth)
 	{
 		pos.x = 0;
 		while (data->map[pos.y][pos.x])

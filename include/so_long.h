@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/28 16:37:11 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:27:15 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	ft_queueadd_back(t_queue **queue, t_queue *new);
 t_queue	*ft_queuelast(t_queue *queue);
 void	ft_queueclear(t_queue **queue, void (*del)(void *));
 void	ft_queuedelone(t_list *queue, void (*del)(void*));
-int		free_dfsmemory(char **visited, t_queue *head, t_pos *pos);
+int		free_dfsmemory(t_data *data, char **visited, t_queue *head, t_pos *pos);
 void	add_node(t_data *data, t_queue *queue, char **visited, t_pos *pos);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:00:54 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/10/28 16:35:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:27:03 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	find_path(t_data *data, int goal_y, int goal_x)
 		pos->y = queue->y;
 		pos->x = queue->x;
 		if (pos->y == goal_y && pos->x == goal_x)
-			return (free_dfsmemory(visited, head, pos));
+			return (free_dfsmemory(data, visited, head, pos));
 		add_node(data, queue, visited, pos);
 		queue = queue->next;
 	}
-	free_dfsmemory(visited, head, pos);
+	free_dfsmemory(data, visited, head, pos);
 	return (0);
 }
 
@@ -60,7 +60,8 @@ char	**create_array(char **array, t_data *data)
 {
 	int	i;
 
-	array = malloc(sizeof(char *) * data->map_info.map_heigth);
+	array = malloc(sizeof(char *) * data->map_info.map_heigth + 1);
+	array[data->map_info.map_heigth - 1] = "\0";
 	if (!array)
 		exit_error("Malloc Error", data);
 	i = 0;
@@ -74,7 +75,6 @@ char	**create_array(char **array, t_data *data)
 		array[i][data->map_info.map_length] = 0;
 		i++;
 	}
-	array[data->map_info.map_heigth] = 0;
 	return (array);
 }
 
@@ -86,15 +86,14 @@ int	isvalid(char c, char visited)
 		return (1);
 }
 
-int	free_dfsmemory(char **visited, t_queue *head, t_pos *pos)
+int	free_dfsmemory(t_data *data, char **visited, t_queue *head, t_pos *pos)
 {
 	t_queue	*tmp;
+	int		i;
 
-	/*while (*visited)
-	{
-		free(*visited);
-		visited++;
-	}*/
+	i = -1;
+	while (++i < data->map_info.map_heigth)
+		free(visited[i]);
 	free(visited);
 	while (head)
 	{
