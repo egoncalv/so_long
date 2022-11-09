@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/09 13:16:09 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:41:54 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include "../gnl/get_next_line.h"
 # include <mlx.h>
 # include <fcntl.h>
+
+# define WALL "./assets/wall.xpm"
+# define PLAYER_LEFT "./assets/player_left.xpm"
+# define PLAYER "./assets/player.xpm"
+# define EMPTY "./assets/wood.xpm"
+# define COLLECT "./assets/collectible.xpm"
+# define EXIT "./assets/door.xpm"
 
 typedef struct s_map
 {

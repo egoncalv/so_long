@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 01:06:54 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/09 13:15:04 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:43:09 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ void	choose_tile(t_data *data, char c, t_pos pos)
 				* (data->img_heigth));
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:54:40 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/09 13:28:20 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:34:00 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	exit_error(char *error_message, t_data *data)
 	while (++i < data->map_info.map_heigth && data->map[i])
 		free(data->map[i]);
 	free(data->map);
-	free(data->mlx);
+	if (data->mlx)
+		free(data->mlx);
 	exit(0);
 }
 

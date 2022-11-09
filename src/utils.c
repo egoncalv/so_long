@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/09 12:50:21 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:43:42 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,16 @@ void	check_extension(char *file, int argc, t_data *data)
 
 void	set_map(t_data *data)
 {
-	data->map_info.wall = mlx_xpm_file_to_image(data->mlx, "./assets/wall.xpm", &data->img_width, &data->img_heigth);
-	data->map_info.player = mlx_xpm_file_to_image(data->mlx, "./assets/player_left.xpm", &data->img_width, &data->img_heigth);
-	data->map_info.empty = mlx_xpm_file_to_image(data->mlx, "./assets/wood.xpm", &data->img_width, &data->img_heigth);
-	data->map_info.collect = mlx_xpm_file_to_image(data->mlx, "./assets/collectible.xpm", &data->img_width, &data->img_heigth);
-	data->map_info.exit = mlx_xpm_file_to_image(data->mlx, "./assets/door.xpm", &data->img_width, &data->img_heigth);	
+	data->map_info.wall = mlx_xpm_file_to_image(data->mlx, WALL,
+			&data->img_width, &data->img_heigth);
+	data->map_info.player = mlx_xpm_file_to_image(data->mlx,
+			PLAYER_LEFT, &data->img_width, &data->img_heigth);
+	data->map_info.empty = mlx_xpm_file_to_image(data->mlx, EMPTY,
+			&data->img_width, &data->img_heigth);
+	data->map_info.collect = mlx_xpm_file_to_image(data->mlx,
+			COLLECT, &data->img_width, &data->img_heigth);
+	data->map_info.exit = mlx_xpm_file_to_image(data->mlx, EXIT,
+			&data->img_width, &data->img_heigth);
 }
 
 void	set_player_position(t_data *data, int x, int y, char element)

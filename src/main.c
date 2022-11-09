@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:10:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/09 12:50:47 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:34:16 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char *argv[])
 {
 	t_data		data;
 
+	data.mlx = 0;
 	data.argv = argv[1];
 	check_extension(argv[1], argc, &data);
 	parse_maps(&data);
