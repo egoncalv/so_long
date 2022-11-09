@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/09 17:56:05 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 18:08:51 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	count_lines(char *argv)
 	count = 0;
 	fd = open (argv, O_RDONLY);
 	tmp = get_next_line(fd);
+	if (!tmp)
+		exit (0);
 	while (tmp)
 	{
 		free(tmp);
