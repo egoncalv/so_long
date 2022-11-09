@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/08 15:27:15 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:16:09 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ typedef struct s_map
 	int		map_heigth;
 	int		exit_x;
 	int		exit_y;
-	char	*wall;
-	char	*player;
-	char	*empty;
-	char	*collect;
-	char	*exit;
+	void	*wall;
+	void	*player;
+	void	*empty;
+	void	*collect;
+	void	*exit;
 }				t_map;
 
 typedef struct s_object
@@ -50,11 +50,6 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			length;
-	int			endian;
 	int			img_width;
 	int			img_heigth;
 	char		*argv;
@@ -85,7 +80,7 @@ int		exit_clean(t_data *data);
 void	init_mlx(t_data *data);
 void	set_map(t_data *data);
 void	draw_map(t_data *data);
-void	choose_tile(t_data *data, char c);
+void	choose_tile(t_data *data, char c, t_pos pos);
 void	set_player_position(t_data *data, int x, int y, char element);
 int		key_hook(int keycode, t_data *data);
 void	verify_object(t_data *data);

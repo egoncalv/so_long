@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 00:13:10 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/08 18:41:56 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:50:58 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_mlx(t_data *data)
 	data->win = mlx_new_window(data->mlx, width, heigth, "so_long");
 	data->player.collected = 0;
 	data->steps = 1;
+	set_map(data);
 	draw_map(data);
 	mlx_key_hook(data->win, key_hook, data);
 	mlx_hook(data->win, 17, 0, exit_clean, data);

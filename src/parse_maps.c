@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/08 15:28:50 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:50:39 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parse_maps(t_data *data)
 		data->map[pos.y++] = get_next_line(fd);
 	pos.y = 0;
 	close(fd);
-	set_map(data);
+	data->map_info.map_length = ft_strlen(data->map[0]);
 	check_walls(data);
 	check_player(data);
 	check_exit(data);
