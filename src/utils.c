@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:57:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/09 15:43:42 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:56:05 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,10 @@ void	set_player_position(t_data *data, int x, int y, char element)
 		data->player.x = x;
 		data->player.y = y;
 	}
+}
+
+void	check_chars(char c, t_data *data)
+{
+	if (c != 'P' && c != 'E' && c != '0' && c != '1' && c != 'C')
+		exit_error("Invalid Char found in the map", data);
 }

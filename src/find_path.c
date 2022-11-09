@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:00:54 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/08 15:27:03 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:26:56 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	isvalid(char c, char visited)
 		return (0);
 	else
 		return (1);
+	return (0);
 }
 
 int	free_dfsmemory(t_data *data, char **visited, t_queue *head, t_pos *pos)

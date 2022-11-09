@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 01:01:00 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/09 15:41:54 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 18:02:39 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,7 @@ void	ft_queueclear(t_queue **queue, void (*del)(void *));
 void	ft_queuedelone(t_list *queue, void (*del)(void*));
 int		free_dfsmemory(t_data *data, char **visited, t_queue *head, t_pos *pos);
 void	add_node(t_data *data, t_queue *queue, char **visited, t_pos *pos);
+void	check_chars(char c, t_data *data);
+void	destroy_images(t_data *data);
 
 #endif

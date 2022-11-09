@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 07:34:07 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/09 12:50:39 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/09 18:01:01 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,11 @@ void	check_player(t_data *data)
 	while (pos.y < data->map_info.map_heigth)
 	{
 		pos.x = 0;
-		while (data->map[pos.y][pos.x])
+		while (data->map[pos.y][pos.x] && data->map[pos.y][pos.x] != '\n')
 		{
 			if (data->map[pos.y][pos.x] == 'P')
 				set_player_position(data, pos.x, pos.y, 'P');
+			check_chars(data->map[pos.y][pos.x], data);
 			pos.x++;
 		}
 		pos.y++;
