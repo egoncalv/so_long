@@ -8,4 +8,6 @@ For this project we are going to use the school graphical library: the MiniLibX.
 
 I have learned how to manage windows, images, keyboard events, as well as pathfinding algorithms and graphical programming.
 
-<p align=center>![My so_long Gameplay](https://github.com/egoncalv/so_long/blob/3db24b67fcff7c873da4c8e92013aae5868b4485/ezgif.com-gif-maker.gif)</p>
+<p align=center>
+  <img href=https://user-images.githubusercontent.com/37090738/201161987-efebf462-53b1-424e-9823-9894c37332be.gif>
+</p>
