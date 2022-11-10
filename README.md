@@ -27,3 +27,6 @@ Another challenge was to check if the map had a valid path (Player being able to
 Once everything is checked, the game starts and we are able to play it:
 
 ![Gameplay gif](https://user-images.githubusercontent.com/37090738/201161987-efebf462-53b1-424e-9823-9894c37332be.gif)
+
+To run it (Linux Only), you can use the following command in the root of the repository:
+`make`
