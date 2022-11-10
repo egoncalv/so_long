@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 00:13:10 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/19 01:11:48 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/09 12:50:58 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	init_mlx(t_data *data)
 	heigth = data->map_info.map_heigth * 64;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, width, heigth, "so_long");
+	data->player.collected = 0;
+	data->steps = 1;
+	set_map(data);
 	draw_map(data);
 	mlx_key_hook(data->win, key_hook, data);
 	mlx_hook(data->win, 17, 0, exit_clean, data);

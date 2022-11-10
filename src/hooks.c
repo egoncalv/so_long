@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 01:55:59 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/06/19 00:07:20 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/09 15:42:08 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,23 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == KEY_LEFT)
 	{
 		move_left(data);
-		data->map_info.player = "./assets/player_left.xpm";
+		mlx_destroy_image(data->mlx, data->map_info.player);
+		data->map_info.player = mlx_xpm_file_to_image(data->mlx, PLAYER_LEFT,
+				&data->img_width, &data->img_heigth);
 	}
 	if (keycode == KEY_RIGHT)
 	{	
 		move_right(data);
-		data->map_info.player = "./assets/player.xpm";
+		mlx_destroy_image(data->mlx, data->map_info.player);
+		data->map_info.player = mlx_xpm_file_to_image(data->mlx, PLAYER,
+				&data->img_width, &data->img_heigth);
 	}
 	draw_map(data);
 	return (0);
 }
+
+//This function verifies if the player
+//gets an collectable or if it is on the exit.
 
 void	verify_object(t_data *data)
 {

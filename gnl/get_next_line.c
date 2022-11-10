@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 19:33:52 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/06/04 01:22:16 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/08 18:48:22 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*ft_state(char *state)
 		free(state);
 		return (NULL);
 	}
-	str = malloc(sizeof(char) * ft_stringlen(state) - i + 1);
+	str = malloc(sizeof(char) * ft_stringlen(state) - i);
 	if (!str)
 		return (NULL);
 	i++;
