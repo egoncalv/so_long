@@ -19,17 +19,18 @@
 int	main(int argc, char *argv[])
 {
 	t_data		data;
-	int			fd;
 
 	data.mlx = 0;
 	data.map = 0;
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		exit_error("The map does not exist", &data);
-	close (fd);
-	check_extension(argv[1], argc, &data);
-	data.argv = argv[1];
+
+	if (argc < 2)
+		exit_error("You must pass one valid map as argument!", &data);
+	
+	data.map_file_path = argv[1];
+	check_file_exists(data.map_file_path, &data);
+	check_file_extension(data.map_file_path, &data);
 	parse_maps(&data);
 	init_mlx(&data);
+
 	return (0);
 }

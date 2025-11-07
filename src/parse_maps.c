@@ -20,12 +20,12 @@ void	parse_maps(t_data *data)
 	int		fd;
 	t_pos	pos;
 
-	data->map_info.map_heigth = count_lines(data->argv);
+	data->map_info.map_heigth = count_lines(data->map_file_path);
 	data->map = malloc(sizeof(*data->map) * data->map_info.map_heigth + 1);
 	data->map[data->map_info.map_heigth - 1] = "\0";
 	if (!data->map)
 		exit_error("Failed to allocate memory", data);
-	fd = open(data->argv, O_RDONLY);
+	fd = open(data->map_file_path, O_RDONLY);
 	if (fd < 0)
 		exit_error("The map does not exist", data);
 	pos.y = 0;

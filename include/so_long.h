@@ -59,7 +59,7 @@ typedef struct s_data
 	void		*win;
 	int			img_width;
 	int			img_heigth;
-	char		*argv;
+	char		*map_file_path;
 	char		**map;
 	t_object	player;
 	int			collectibles;
@@ -79,7 +79,8 @@ void	parse_maps(t_data *data);
 int		count_lines(char *argv);
 void	check_walls(t_data *data);
 void	check_collectibles(t_data *data);
-void	check_extension(char *file, int argc, t_data *data);
+void	check_file_exists(char *filePath, t_data *data);
+void	check_file_extension(char *filePath, t_data *data);
 void	check_player(t_data *data);
 void	check_exit(t_data *data);
 int		exit_error(char *error_message, t_data *data);

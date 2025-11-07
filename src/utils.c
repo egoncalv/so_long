@@ -33,13 +33,21 @@ int	count_lines(char *argv)
 	return (count);
 }
 
-void	check_extension(char *file, int argc, t_data *data)
+void	check_file_exists(char *filePath, t_data *data)
+{
+	int fileDescriptor;
+
+	fileDescriptor = open(filePath, O_RDONLY);
+	if (fileDescriptor < 0)
+		exit_error("This file does not exist", data);
+	close (fileDescriptor);
+}
+
+void	check_file_extension(char *filePath, t_data *data)
 {
 	char	*extension;
 
-	if (argc < 2)
-		exit_error("You must pass one valid map as argument!", data);
-	extension = ft_strrchr(file, '.');
+	extension = ft_strrchr(filePath, '.');
 	if (!extension || ft_strncmp(extension, ".ber", 4) != 0)
 		exit_error("The map needs a .ber extension!", data);
 }
